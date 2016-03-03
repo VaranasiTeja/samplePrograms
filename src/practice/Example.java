@@ -2,8 +2,14 @@ package practice;
 
 public class Example {
 	public static void main(String args[]) {
-		char ch = 103;
-		int k = 3;
-		System.out.println(Math.pow(3, 3));
+		int i = 2;
+		i = i + 23;
+		System.out.println(i);
+		System.out.println(i);
+		Integer m = new Integer(4);
+		m = m + 23;
+		System.out.println(m);
+		Integer z;
+		int k;
 	}
 }
