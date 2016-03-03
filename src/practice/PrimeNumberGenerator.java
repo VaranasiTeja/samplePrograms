@@ -40,19 +40,19 @@ public class PrimeNumberGenerator {
 	}
 
 	public List<Integer> generatePrimeNumbersBySeive(int endingNumber) {
-		List<Boolean> booleanList = new ArrayList<Boolean>(Arrays.asList(new Boolean[endingNumber]));
-		Collections.fill(booleanList, Boolean.TRUE);
+		boolean[] booleanList = new boolean[endingNumber];
 		double squareRoot = Math.sqrt(endingNumber);
-		for (int num = 2; num < squareRoot; num++) {
-			if (booleanList.get(num)) {
+		for (int num = 3; num < squareRoot; num += 2) {
+			if (!booleanList[num]) {
 				for (int j = num * num; j < endingNumber; j += (num)) {
-					booleanList.set(j, false);
+					booleanList[j] = true;
 				}
 			}
 		}
 		List<Integer> primeNumbersList = new ArrayList<Integer>();
-		for (int j = 2; j < booleanList.size(); j++) {
-			if (booleanList.get(j)) {
+		primeNumbersList.add(2);
+		for (int j = 3; j < endingNumber; j += 2) {
+			if (!booleanList[j]) {
 				primeNumbersList.add(j);
 			}
 		}
