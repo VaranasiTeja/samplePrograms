@@ -1,18 +1,25 @@
 package practice;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 
 public class Febonacci {
-	public int findNthFebonacci(int n) {
-		HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>();
-		if (n > 0) {
-			hashmap.put(0, 0);
-			hashmap.put(1, 1);
-			for (int i = 2; i < n; i++) {
-				hashmap.put(i, hashmap.get(i - 1) + hashmap.get(i - 2));
+	HashMap<Integer, BigInteger> hashmap = new HashMap<Integer, BigInteger>();
+
+	public BigInteger findNthFebonacci(int num) {
+		if (hashmap.size() > num) {
+			return hashmap.get(num - 1);
+		} else if (num > 0) {
+			if (hashmap.size() < 2) {
+				hashmap.put(0, BigInteger.ZERO);
+				hashmap.put(1, BigInteger.ONE);
 			}
-			return hashmap.get(n - 1);
+			for (int key = hashmap.size(); key < num; key++) {
+				hashmap.put(key, hashmap.get(key - 1).add(hashmap.get(key - 2)));
+			}
+			System.out.println(hashmap);
+			return hashmap.get(num - 1);
 		} else
-			return -1;
+			throw new RuntimeException("Please no negative numbers");
 	}
 }
