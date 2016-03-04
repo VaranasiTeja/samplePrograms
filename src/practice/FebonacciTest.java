@@ -11,9 +11,9 @@ public class FebonacciTest {
 
 	@Test
 	public void testNthFibonacciNumber() {
-		Assert.assertEquals(BigInteger.valueOf(4181), febnaccci.findNthFebonacci(20));
 		Assert.assertEquals(BigInteger.valueOf(3), febnaccci.findNthFebonacci(5));
 		Assert.assertEquals(BigInteger.valueOf(377), febnaccci.findNthFebonacci(15));
+		Assert.assertEquals(BigInteger.valueOf(4181), febnaccci.findNthFebonacci(20));
 	}
 
 }

@@ -6,20 +6,17 @@ import java.util.HashMap;
 public class Febonacci {
 	HashMap<Integer, BigInteger> hashmap = new HashMap<Integer, BigInteger>();
 
+	public Febonacci() {
+		hashmap.put(0, BigInteger.ZERO);
+		hashmap.put(1, BigInteger.ONE);
+	}
+
 	public BigInteger findNthFebonacci(int num) {
-		if (hashmap.size() > num) {
-			return hashmap.get(num - 1);
-		} else if (num > 0) {
-			if (hashmap.size() < 2) {
-				hashmap.put(0, BigInteger.ZERO);
-				hashmap.put(1, BigInteger.ONE);
-			}
-			for (int key = hashmap.size(); key < num; key++) {
-				hashmap.put(key, hashmap.get(key - 1).add(hashmap.get(key - 2)));
-			}
-			System.out.println(hashmap);
-			return hashmap.get(num - 1);
-		} else
+		if (num < 0)
 			throw new RuntimeException("Please no negative numbers");
+		if (hashmap.get(num - 1) != null)
+			return hashmap.get(num - 1);
+		hashmap.put(num - 1, findNthFebonacci(num - 1).add(findNthFebonacci(num - 2)));
+		return hashmap.get(num - 1);
 	}
 }
